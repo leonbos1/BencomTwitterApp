@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9ecHq4wWWEOGf3ldDCQ9wukkiwU7hvbYw0IEEZqNWCvarSsfBnsdwdq98wb7GyoB+EePwChzICKqXtX0kiRsSQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ktmle\\source\\repos\\BencomTwitterApp\\BencomTwitterApp\\BencomTwitterApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ktmle\\.nuget\\packages\\microsoft.aspnetcore.authentication.twitter\\6.0.9\\microsoft.aspnetcore.authentication.twitter.6.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
