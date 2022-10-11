@@ -6,14 +6,16 @@
 }
 
 <form asp-controller="Twitter" asp-action="setUser" method="post">
-    <div class="mb-3">
-        <label class="form-label">
-            User
-        </label>
-        <input asp-for="Username" type="text" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Set User</button>
+    <div class="row">
+        <div class="col-2">
+            <p>Choose a username</p>
+        </div>
+        <div class="col-3">
+            <input asp-for="Username" type="text" class="form-control" />
+        </div>
+        <div class="col-3">
+            <button type="submit" class="btn btn-primary">Set User</button>
+        </div>
     </div>
 </form>
 
@@ -22,7 +24,11 @@
     <p>Choose a username to view tweets</p>
 }
 else{
-    @foreach (var d in Model.data) {
-       <p> @d.text </p>
-    }
+    <div class="card">
+        @foreach (var d in Model.data) {
+           <div class="card-body">
+               <p> @d.text </p>
+           </div>
+        }
+    </div>
 }

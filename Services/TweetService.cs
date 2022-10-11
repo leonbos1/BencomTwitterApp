@@ -24,7 +24,10 @@ namespace BencomTwitterApp.Services
                 string jsonResponse = response.Content.ReadAsStringAsync().Result;
                 Debug.WriteLine(jsonResponse);
 
-                return JsonConvert.DeserializeObject<Tweets>(jsonResponse);
+                Tweets tweets = JsonConvert.DeserializeObject<Tweets>(jsonResponse);
+                tweets.Username = username;
+
+                return tweets;
 
             }
 

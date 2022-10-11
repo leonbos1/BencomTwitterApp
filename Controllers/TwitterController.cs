@@ -11,8 +11,9 @@ namespace BencomTwitterApp.Controllers
 {
     public class TwitterController : Controller
     {
-        private TweetService TweetService = new TweetService();
+        private static TweetService TweetService = new TweetService();
         private static Tweets Tweets;
+        private static string TwitterUsername = "ElonMusk";
 
         public IActionResult Index()
         {
@@ -41,7 +42,8 @@ namespace BencomTwitterApp.Controllers
             }
             else
             {
-                Tweets.Username = Username;
+                TwitterUsername = Username;
+                Tweets.Username = TwitterUsername;
             }
             
             return RedirectToAction(nameof(Index));
