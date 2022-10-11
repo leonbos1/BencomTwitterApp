@@ -1,6 +1,10 @@
-﻿@model BencomTwitterApp.Models.Root;
+﻿@model BencomTwitterApp.Models.Tweets;
 
-<h2>User:</h2>
+@if (Model != null)
+{
+    <h1>User: @Model.Username</h1>
+}
+
 <form asp-controller="Twitter" asp-action="setUser" method="post">
     <div class="mb-3">
         <label class="form-label">
@@ -14,7 +18,11 @@
 </form>
 
 <h1>Tweets</h1>
-
-@foreach (var d in Model.data) {
-   <p> @d.text </p>
+@if (Model == null) {
+    <p>Choose a username to view tweets</p>
+}
+else{
+    @foreach (var d in Model.data) {
+       <p> @d.text </p>
+    }
 }

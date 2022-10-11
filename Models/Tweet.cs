@@ -10,8 +10,12 @@ namespace BencomTwitterApp.Models
         public string text { get; set; }
     }
 
-    public class Root
+    public class Tweets
     {
+        public Tweets(string Username)
+        {
+            this.Username = Username;
+        }
         public string Username { get; set; }
         public List<Tweet> data { get; set; }
     }

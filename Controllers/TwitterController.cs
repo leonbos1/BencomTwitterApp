@@ -5,55 +5,45 @@ using System.Diagnostics;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using BencomTwitterApp.Services;
 
 namespace BencomTwitterApp.Controllers
 {
     public class TwitterController : Controller
     {
-
-        public static string TwitterUsername = "geertwilderspvv";
+        private TweetService TweetService = new TweetService();
+        private static Tweets Tweets;
 
         public IActionResult Index()
         {
-         
-            var bearer_token = "AAAAAAAAAAAAAAAAAAAAAEswiAEAAAAAN5n12SejPIh8osChcGjzXK%2BXiqw%3DBrgpvcLXgQ6iROiZ139Cq4QVRLjDTZXlq6f9NKlPBhjF3HjBOj";
-            Debug.WriteLine(TwitterUsername);
-
-            var url = string.Format("https://api.twitter.com/2/tweets/search/recent?query=from:{0}", TwitterUsername);
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer_token);
-
-            try
+            if (Tweets == null)
             {
-                var response = client.GetAsync(url).Result;
-                string jsonResponse = response.Content.ReadAsStringAsync().Result;
-                Debug.WriteLine(jsonResponse);
-
-                var tweets = JsonConvert.DeserializeObject<Root>(jsonResponse);
-
-                //Debug.WriteLine(tweets.data[0].text);
-
-                return View(tweets);
-
+                Debug.WriteLine("here");
+                return View();
             }
 
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-
-            }
-
-            return View();
+            Tweets = TweetService.getTweetsFromUser(Tweets.Username);
+            return View(Tweets);
 
         }
 
         public IActionResult setUser(string Username)
         {
-            if (TwitterUsername != "")
+            if (Username == null)
             {
-                TwitterUsername = Username;
+                
+                return RedirectToAction(nameof(Index));
             }
 
+            if (Tweets == null)
+            {
+                Tweets = new Tweets(Username);
+            }
+            else
+            {
+                Tweets.Username = Username;
+            }
+            
             return RedirectToAction(nameof(Index));
         }
     }
