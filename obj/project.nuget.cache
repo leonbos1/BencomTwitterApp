@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "9ecHq4wWWEOGf3ldDCQ9wukkiwU7hvbYw0IEEZqNWCvarSsfBnsdwdq98wb7GyoB+EePwChzICKqXtX0kiRsSQ==",
+  "dgSpecHash": "EZPRrAnk1FV3GALa1Hg/JpBs85EjAxsQBAQdCzXnnc8NUSYHuWC8N+l4BRbI1vI8uP8qmg6YKgxjQb98M4v5hQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ktmle\\source\\repos\\BencomTwitterApp\\BencomTwitterApp\\BencomTwitterApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ktmle\\.nuget\\packages\\microsoft.aspnetcore.authentication.twitter\\6.0.9\\microsoft.aspnetcore.authentication.twitter.6.0.9.nupkg.sha512"
+    "C:\\Users\\ktmle\\.nuget\\packages\\microsoft.aspnetcore.authentication.twitter\\6.0.9\\microsoft.aspnetcore.authentication.twitter.6.0.9.nupkg.sha512",
+    "C:\\Users\\ktmle\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

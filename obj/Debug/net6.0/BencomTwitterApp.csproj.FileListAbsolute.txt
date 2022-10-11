@@ -26,3 +26,4 @@ C:\Users\ktmle\source\repos\BencomTwitterApp\BencomTwitterApp\obj\Debug\net6.0\r
 C:\Users\ktmle\source\repos\BencomTwitterApp\BencomTwitterApp\obj\Debug\net6.0\BencomTwitterApp.pdb
 C:\Users\ktmle\source\repos\BencomTwitterApp\BencomTwitterApp\obj\Debug\net6.0\BencomTwitterApp.genruntimeconfig.cache
 C:\Users\ktmle\source\repos\BencomTwitterApp\BencomTwitterApp\obj\Debug\net6.0\ref\BencomTwitterApp.dll
+C:\Users\ktmle\source\repos\BencomTwitterApp\BencomTwitterApp\bin\Debug\net6.0\Newtonsoft.Json.dll
