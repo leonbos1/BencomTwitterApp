@@ -1,4 +1,5 @@
-﻿using BencomTwitterApp.Models;
+﻿using BencomTwitterApp.Data;
+using BencomTwitterApp.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http.Headers;
@@ -23,6 +24,11 @@ namespace BencomTwitterApp.Services
         {
             var url = string.Format("https://api.twitter.com/2/tweets/search/recent?query=from:{0}", username);
 
+            return Get(url);    
+        }
+
+        private Tweets Get(string url)
+        {
             try
             {
                 var response = _httpClient.GetAsync(url).Result;
@@ -30,14 +36,14 @@ namespace BencomTwitterApp.Services
                 Tweets tweets = JsonConvert.DeserializeObject<Tweets>(jsonResponse);
 
                 return tweets;
-
             }
 
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return new Tweets();
 
-            }            
+            }
         }
 
     }

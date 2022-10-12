@@ -10,6 +10,7 @@ namespace BencomTwitterApp.Models
         public string text { get; set; }
     }
 
+    //Model dat gebruikt wordt om een tweet json te deserializen
     public class Tweets
     {
         public List<Tweet> data { get; set; }

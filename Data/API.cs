@@ -1,4 +1,4 @@
-﻿namespace BencomTwitterApp.Models
+﻿namespace BencomTwitterApp.Data
 {
     public class API
     {

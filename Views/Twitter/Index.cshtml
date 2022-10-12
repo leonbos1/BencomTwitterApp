@@ -4,22 +4,21 @@
     <div class="row">
         <div class="col-1">
             <select class="btn btn-primary dropdown-toggle" name="Username" onchange="this.form.submit()">
-                <option value="minpres">Mark Rutte</option>
-                <option value="geertwilderspvv">Geert Wilders</option>
-                <option value="Minister_FIN">Sigrid Kaag</option>
-                <option value="MinisterKenE">Rob Jetten</option>
-                <option value="jesseklaver">Jesse Klaver</option>
+                <option disabled hidden selected>Select a user</option>
+                @foreach (var account in ViewBag.TwitterAccounts) {
+                    <option value="@account.Username">@account.DisplayName</option>
+                }
             </select>
         </div>
     </div>
 </form>
 
-<h1>Tweets</h1>
+<h1>Tweets by @ViewBag.TwitterUsername</h1>
 
 <div class="card">
     @foreach (var tweet in Model.data) {
         <div class="card-body">
             <p> @tweet.text </p>
         </div>
-    }
+    } 
 </div>
