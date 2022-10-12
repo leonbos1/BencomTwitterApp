@@ -14,20 +14,24 @@ namespace BencomTwitterApp.Services
 
         public TweetService()
         {
+            //configureren van de authentication 
             _api = new API();
             _BearerToken = _api._BearerToken;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _BearerToken);
         }
 
+        //haalt laatste 10 tweets van een user op
         public Tweets getTweetsFromUser(string username)
         {
             var url = string.Format("https://api.twitter.com/2/tweets/search/recent?query=from:{0}", username);
 
-            return Get(url);    
+            return GetTweets(url);    
         }
 
-        private Tweets Get(string url)
+        //Methode die voor meerdere endpoints gebruikt kan worden om tweets op te halen
+        //geeft de tweets terug in een Tweets model
+        private Tweets GetTweets(string url)
         {
             try
             {
@@ -42,7 +46,6 @@ namespace BencomTwitterApp.Services
             {
                 Debug.WriteLine(ex.Message);
                 return new Tweets();
-
             }
         }
 

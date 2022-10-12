@@ -2,9 +2,10 @@
 
 <form asp-controller="Twitter" asp-action="setUser" method="post">
     <div class="row">
-        <div class="col-1">
+        <div class="col-2">
             <select class="btn btn-primary dropdown-toggle" name="Username" onchange="this.form.submit()">
                 <option disabled hidden selected>Select a user</option>
+                <!--dropdown populaten via twitteraccount model-->
                 @foreach (var account in ViewBag.TwitterAccounts) {
                     <option value="@account.Username">@account.DisplayName</option>
                 }
@@ -16,6 +17,7 @@
 <h1>Tweets by @ViewBag.TwitterUsername</h1>
 
 <div class="card">
+    <!--Tweets -->
     @foreach (var tweet in Model.data) {
         <div class="card-body">
             <p> @tweet.text </p>
