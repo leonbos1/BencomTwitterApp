@@ -1,36 +1,25 @@
 ﻿@model BencomTwitterApp.Models.Tweets;
 
-@if (ViewBag.Username != null)
-{
-    <h1>User: @ViewBag.Username</h1>
-}
-
 <form asp-controller="Twitter" asp-action="setUser" method="post">
     <div class="row">
-        <div class="col-2">
-            <p>Choose a username</p>
-        </div>
-        <div class="col-3">
-            <input name="Username" type="text" class="form-control" />
-        </div>
-        <div class="col-3">
-            <button type="submit" class="btn btn-primary">Set User</button>
+        <div class="col-1">
+            <select class="btn btn-primary dropdown-toggle" name="Username" onchange="this.form.submit()">
+                <option value="minpres">Mark Rutte</option>
+                <option value="geertwilderspvv">Geert Wilders</option>
+                <option value="Minister_FIN">Sigrid Kaag</option>
+                <option value="MinisterKenE">Rob Jetten</option>
+                <option value="jesseklaver">Jesse Klaver</option>
+            </select>
         </div>
     </div>
 </form>
 
 <h1>Tweets</h1>
-@if (Model == null) {
-    <p>Choose a username to view tweets</p>
-}
-else{
-    if (Model.data != null) {
-        <div class="card">
-            @foreach (var tweet in Model.data) {
-               <div class="card-body">
-                   <p> @tweet.text </p>
-               </div>
-            }
+
+<div class="card">
+    @foreach (var tweet in Model.data) {
+        <div class="card-body">
+            <p> @tweet.text </p>
         </div>
     }
-}
+</div>

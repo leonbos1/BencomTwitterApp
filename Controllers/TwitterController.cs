@@ -12,19 +12,12 @@ namespace BencomTwitterApp.Controllers
     public class TwitterController : Controller
     {
         private static TweetService TweetService = new TweetService();
-        private static Tweets Tweets;
-        private static string TwitterUsername = "ElonMusk";
+        private static Tweets Tweets = new Tweets();
+        private static string TwitterUsername = "minpres";
 
         public IActionResult Index()
         {
-            
-            if (Tweets == null)
-            {  
-                return View();
-            }
-
             Tweets = TweetService.getTweetsFromUser(TwitterUsername);
-            ViewBag.Username = TwitterUsername;
 
             return View(Tweets);
 
@@ -32,19 +25,8 @@ namespace BencomTwitterApp.Controllers
 
         public IActionResult setUser(string Username)
         {
-            if (Username == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
-            if (Tweets == null)
-            {
-                Tweets = new Tweets();
-            }
-            
             TwitterUsername = Username;
-            
-            
+              
             return RedirectToAction(nameof(Index));
         }
     }
