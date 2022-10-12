@@ -1,8 +1,8 @@
 ﻿@model BencomTwitterApp.Models.Tweets;
 
-@if (Model != null)
+@if (ViewBag.Username != null)
 {
-    <h1>User: @Model.Username</h1>
+    <h1>User: @ViewBag.Username</h1>
 }
 
 <form asp-controller="Twitter" asp-action="setUser" method="post">
@@ -11,7 +11,7 @@
             <p>Choose a username</p>
         </div>
         <div class="col-3">
-            <input asp-for="Username" type="text" class="form-control" />
+            <input name="Username" type="text" class="form-control" />
         </div>
         <div class="col-3">
             <button type="submit" class="btn btn-primary">Set User</button>
@@ -24,11 +24,13 @@
     <p>Choose a username to view tweets</p>
 }
 else{
-    <div class="card">
-        @foreach (var d in Model.data) {
-           <div class="card-body">
-               <p> @d.text </p>
-           </div>
-        }
-    </div>
+    if (Model.data != null) {
+        <div class="card">
+            @foreach (var tweet in Model.data) {
+               <div class="card-body">
+                   <p> @tweet.text </p>
+               </div>
+            }
+        </div>
+    }
 }

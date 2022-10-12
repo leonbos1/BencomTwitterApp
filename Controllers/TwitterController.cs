@@ -17,13 +17,15 @@ namespace BencomTwitterApp.Controllers
 
         public IActionResult Index()
         {
+            
             if (Tweets == null)
-            {
-                Debug.WriteLine("here");
+            {  
                 return View();
             }
 
-            Tweets = TweetService.getTweetsFromUser(Tweets.Username);
+            Tweets = TweetService.getTweetsFromUser(TwitterUsername);
+            ViewBag.Username = TwitterUsername;
+
             return View(Tweets);
 
         }
@@ -32,19 +34,16 @@ namespace BencomTwitterApp.Controllers
         {
             if (Username == null)
             {
-                
                 return RedirectToAction(nameof(Index));
             }
 
             if (Tweets == null)
             {
-                Tweets = new Tweets(Username);
+                Tweets = new Tweets();
             }
-            else
-            {
-                TwitterUsername = Username;
-                Tweets.Username = TwitterUsername;
-            }
+            
+            TwitterUsername = Username;
+            
             
             return RedirectToAction(nameof(Index));
         }

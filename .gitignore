@@ -1,3 +1,9 @@
 
 *.pdb
 *.dll
+bin/Debug/net6.0/BencomTwitterApp.pdb
+bin/Debug/net6.0/BencomTwitterApp.dll
+*.dll
+*.pdb
+*.dll
+*.sentinel

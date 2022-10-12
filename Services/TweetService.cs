@@ -7,25 +7,27 @@ namespace BencomTwitterApp.Services
 {
     public class TweetService
     {
+        private API _api;
+        private string _BearerToken;
+        private HttpClient _httpClient;
+
+        public TweetService()
+        {
+            _api = new API();
+            _BearerToken = _api._BearerToken;
+            _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _BearerToken);
+        }
 
         public Tweets getTweetsFromUser(string username)
         {
-            API api = new API();
-
-            var bearer_token = api.getBearerToken();
-
             var url = string.Format("https://api.twitter.com/2/tweets/search/recent?query=from:{0}", username);
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer_token);
 
             try
             {
-                var response = client.GetAsync(url).Result;
+                var response = _httpClient.GetAsync(url).Result;
                 string jsonResponse = response.Content.ReadAsStringAsync().Result;
-                Debug.WriteLine(jsonResponse);
-
                 Tweets tweets = JsonConvert.DeserializeObject<Tweets>(jsonResponse);
-                tweets.Username = username;
 
                 return tweets;
 
@@ -33,11 +35,9 @@ namespace BencomTwitterApp.Services
 
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                return new Tweets();
 
-            }
-
-            return new Tweets(username);
+            }            
         }
 
     }
