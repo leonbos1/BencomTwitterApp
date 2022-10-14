@@ -18,9 +18,14 @@
 
 <div class="card">
     <!--Tweets -->
-    @foreach (var tweet in Model.data) {
-        <div class="card-body">
-            <p> @tweet.text </p>
-        </div>
-    } 
+    @if (Model.data != null)
+    {
+        @foreach (var tweet in Model.data)
+        {
+            <div class="card-body">
+                <p> @tweet.text </p>
+            </div>
+        }
+
+    }
 </div>
