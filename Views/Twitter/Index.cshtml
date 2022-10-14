@@ -1,8 +1,8 @@
 ﻿@model BencomTwitterApp.Models.Tweets;
 
-<form asp-controller="Twitter" asp-action="setUser" method="post">
+<form asp-controller="Twitter" asp-action="SetUser" method="post">
     <div class="row">
-        <div class="col-2">
+        <div class="col-2">                                          <!--klein beetje javascript zodat er geen submit button nodig is-->
             <select class="btn btn-primary dropdown-toggle" name="Username" onchange="this.form.submit()">
                 <option disabled hidden selected>Select a user</option>
                 <!--dropdown populaten via twitteraccount model-->

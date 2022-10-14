@@ -13,6 +13,7 @@ namespace BencomTwitterApp.Controllers
 
         public IActionResult Index()
         {
+            //check of de accounts al initialized zijn
             if (TwitterAccounts.Count == 0)
             {
                 InitTwitterAccounts();
@@ -26,7 +27,10 @@ namespace BencomTwitterApp.Controllers
 
         }
 
-        public IActionResult setUser(string Username)
+        //veranderen van twitter gebruiker
+        //deze method wordt aangeroepen vanuit de dropdown
+        //na het aanroepen staan er tweets van de aangeroepen gebruiker in de view
+        public IActionResult SetUser(string Username)
         {
             TwitterUsername = Username;
 
@@ -41,6 +45,7 @@ namespace BencomTwitterApp.Controllers
             AddTwitterAccount("Sigrid Kaag", "Minister_FIN");
             AddTwitterAccount("Rob Jetten", "MinisterKenE");
             AddTwitterAccount("Jesse Klaver", "jesseklaver");
+            //om te voorkomen dat er een lege pagina wordt weergegeven, is de eerste gebruiker in de dropdown, de standaard gebruiker
             TwitterUsername = TwitterAccounts[0].Username;
         }
 
