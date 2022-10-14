@@ -7,8 +7,8 @@ namespace BencomTwitterApp.Controllers
     public class TwitterController : Controller
     {
         private static TweetService _TweetService = new TweetService();
-        private static Tweets Tweets = new Tweets();
-        private static string TwitterUsername = "minpres";
+        private static Tweets? Tweets = new Tweets();
+        private static string? TwitterUsername;
         private static List<TwitterAccount> TwitterAccounts = new List<TwitterAccount>();
 
         public IActionResult Index()
@@ -41,6 +41,7 @@ namespace BencomTwitterApp.Controllers
             AddTwitterAccount("Sigrid Kaag", "Minister_FIN");
             AddTwitterAccount("Rob Jetten", "MinisterKenE");
             AddTwitterAccount("Jesse Klaver", "jesseklaver");
+            TwitterUsername = TwitterAccounts[0].Username;
         }
 
         //aparte functie voor toevoegen van accounts zodat de applicatie eventueel uitgebreid kan worden met extra accounts toevoegen aan dropdown

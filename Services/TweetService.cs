@@ -22,7 +22,7 @@ namespace BencomTwitterApp.Services
         }
 
         //haalt laatste 10 tweets van een user op
-        public Tweets getTweetsFromUser(string username)
+        public Tweets? getTweetsFromUser(string? username)
         {
             var url = string.Format("https://api.twitter.com/2/tweets/search/recent?query=from:{0}", username);
 
@@ -31,13 +31,13 @@ namespace BencomTwitterApp.Services
 
         //Methode die voor meerdere endpoints gebruikt kan worden om tweets op te halen
         //geeft de tweets terug in een Tweets model
-        private Tweets GetTweets(string url)
+        private Tweets? GetTweets(string url)
         {
             try
             {
                 var response = _httpClient.GetAsync(url).Result;
                 string jsonResponse = response.Content.ReadAsStringAsync().Result;
-                Tweets tweets = JsonConvert.DeserializeObject<Tweets>(jsonResponse);
+                Tweets? tweets = JsonConvert.DeserializeObject<Tweets>(jsonResponse);
 
                 return tweets;
             }
