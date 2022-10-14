@@ -8,14 +8,14 @@ namespace BencomTwitterApp.Services
 {
     public class TweetService
     {
-        private API _api;
+        private Api _api;
         private string _BearerToken;
         private HttpClient _httpClient;
 
         public TweetService()
         {
             //configureren van de authentication 
-            _api = new API();
+            _api = new Api();
             _BearerToken = _api._BearerToken;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _BearerToken);
